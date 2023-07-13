@@ -6,7 +6,7 @@ Proyek ini adalah contoh sederhana aplikasi pengolahan data mahasiswa menggunaka
 
 ## Deskripsi
 
-Aplikasi ini menerima input berupa nama dan NPM mahasiswa, dan memberikan output berupa informasi detail dari NPM tersebut seperti tahun masuk, fakultas, program studi, dan nomor registrasi.
+Aplikasi ini menerima input berupa nama dan kode mobil dan memberikan output berupa informasi detail dari kode tersebut seperti tahun produksi dan negara produksi.
 
 Aplikasi ini mengimplementasikan beberapa konsep penting dalam pemrograman berorientasi objek (OOP) seperti Class, Object, Atribut, Method Constructor, Method Mutator, Method Accessor, Encapsulation, Inheritance, Overloading, Overriding, Seleksi, Perulangan, IO Sederhana, Array, dan Error Handling.
 
@@ -14,7 +14,7 @@ Aplikasi ini mengimplementasikan beberapa konsep penting dalam pemrograman beror
 
 Berikut adalah bagian kode yang relevan dengan konsep OOP yang dijelaskan:
 
-1. **Class** adalah template atau blueprint dari object. Pada kode ini, `Mahasiswa`, `MahasiswaDetail`, dan `MahasiswaBeraksi` adalah contoh dari class.
+1. **Class** adalah template atau blueprint dari object. Pada kode ini, `Mobil`, `MobilDetail`, dan `MobilBeraksi` adalah contoh dari class.
 
 ```bash
 public class Mobil {
@@ -30,20 +30,20 @@ public class MobilBeraksi {
 }
 ```
 
-2. **Object** adalah instance dari class. Pada kode ini, `mhs[i] = new MahasiswaDetail(nama, npm);` adalah contoh pembuatan object.
+2. **Object** adalah instance dari class. Pada kode ini, `mbl[i] = new MobilDetail(nama1, kode1);` adalah contoh pembuatan object.
 
 ```bash
 mbl[i] = new MobilDetail(nama1, kode1);
 ```
 
-3. **Atribut** adalah variabel yang ada dalam class. Pada kode ini, `nama` dan `npm` adalah contoh atribut.
+3. **Atribut** adalah variabel yang ada dalam class. Pada kode ini, `nama` dan `kode` adalah contoh atribut.
 
 ```bash
 private String nama;
 private String kode;
 ```
 
-4. **Constructor** adalah method yang pertama kali dijalankan pada saat pembuatan object. Pada kode ini, constructor ada di dalam class `Mahasiswa` dan `MahasiswaDetail`.
+4. **Constructor** adalah method yang pertama kali dijalankan pada saat pembuatan object. Pada kode ini, constructor ada di dalam class `Mobil`.
 
 ```bash
 public Mobil(String nama, String kode) {
@@ -53,7 +53,7 @@ public Mobil(String nama, String kode) {
 
 ```
 
-5. **Mutator** atau setter digunakan untuk mengubah nilai dari suatu atribut. Pada kode ini, `setNama` dan `setNpm` adalah contoh method mutator.
+5. **Mutator** atau setter digunakan untuk mengubah nilai dari suatu atribut. Pada kode ini, `setNama` dan `setKode` adalah contoh method mutator.
 
 ```bash
 public void setNama(String nama) {
@@ -64,7 +64,7 @@ public void setNama(String nama) {
     }
 ```
 
-6. **Accessor** atau getter digunakan untuk mengambil nilai dari suatu atribut. Pada kode ini, `getNama`, `getNpm`, `getTahunMasuk`, `getFakultas`, `getProdi`, dan `getNoRegistrasi` adalah contoh method accessor.
+6. **Accessor** atau getter digunakan untuk mengambil nilai dari suatu atribut. Pada kode ini, `getNama`, `getkode`, `getTahunProduksi`, dan `getNegaraProduksi` adalah contoh method accessor.
 
 ```bash
  public String getNama() {
@@ -77,16 +77,23 @@ public void setNama(String nama) {
     public String displayInfo(){
         return "Nama: "+getNama()+"\nKode: "+getKode();
     }
+
+public int getTahunProduksi(){
+        return Integer.parseInt(getKode().substring(0, 2)) + 2000;
+    }
+    
+    public String getNegaraProduksi(){
+}
 ```
 
-7. **Encapsulation** adalah konsep menyembunyikan data dengan membuat atribut menjadi private dan hanya bisa diakses melalui method. Pada kode ini, atribut `nama` dan `npm` dienkapsulasi dan hanya bisa diakses melalui method getter dan setter.
+7. **Encapsulation** adalah konsep menyembunyikan data dengan membuat atribut menjadi private dan hanya bisa diakses melalui method. Pada kode ini, atribut `nama` dan `kode` dienkapsulasi dan hanya bisa diakses melalui method getter dan setter.
 
 ```bash
 private String nama;
     private String kode;
 ```
 
-8. **Inheritance** adalah konsep di mana sebuah class bisa mewarisi property dan method dari class lain. Pada kode ini, `MahasiswaDetail` mewarisi `Mahasiswa` dengan sintaks `extends`.
+8. **Inheritance** adalah konsep di mana sebuah class bisa mewarisi property dan method dari class lain. Pada kode ini, `MobilDetail` mewarisi `Mobil` dengan sintaks `extends`.
 
 ```bash
 public class MobilDetail extends Mobil {
@@ -94,7 +101,7 @@ public class MobilDetail extends Mobil {
 }
 ```
 
-9. **Polymorphism** adalah konsep di mana sebuah nama dapat digunakan untuk merujuk ke beberapa tipe atau bentuk objek berbeda. Ini memungkinkan metode-metode dengan nama yang sama untuk berperilaku berbeda tergantung pada tipe objek yang mereka manipulasi, polymorphism bisa berbentuk Overloading ataupun Overriding. Pada kode ini, method `displayInfo(String)` di `Mahasiswa` merupakan overloading method `displayInfo` dan `displayInfo` di `MahasiswaDetail` merupakan override dari method `displayInfo` di `Mahasiswa`.
+9. **Polymorphism** adalah konsep di mana sebuah nama dapat digunakan untuk merujuk ke beberapa tipe atau bentuk objek berbeda. Ini memungkinkan metode-metode dengan nama yang sama untuk berperilaku berbeda tergantung pada tipe objek yang mereka manipulasi, polymorphism bisa berbentuk Overloading ataupun Overriding. Pada kode ini, method `displayInfo(String warna)` di `Mobil` merupakan overloading method `displayInfo` dan `displayInfo` di `MobilDetail` merupakan override dari method `displayInfo` di `Mobil`.
 
 ```bash
 public String displayInfo(String warna){
@@ -113,7 +120,7 @@ public MobilDetail(String nama, String kode) {
     }
 ```
 
-10. **Seleksi** adalah statement kontrol yang digunakan untuk membuat keputusan berdasarkan kondisi. Pada kode ini, digunakan seleksi `if else` dalam method `getFakultas` dan seleksi `switch` dalam method `getProdi`.
+10. **Seleksi** adalah statement kontrol yang digunakan untuk membuat keputusan berdasarkan kondisi. Pada kode ini, digunakan seleksi `if else` dalam method `getNegaraProduksi`.
 
 ```bash
 if(kodeNegaraProduksi.equals("1")){
@@ -145,7 +152,7 @@ for(MobilDetail data: mbl){
 Scanner scanner = new Scanner(System.in);
 ```
 
-13. **Array** adalah struktur data yang digunakan untuk menyimpan beberapa nilai dalam satu variabel. Pada kode ini, `MahasiswaDetail[] mahasiswas = new MahasiswaDetail[2];` adalah contoh penggunaan array.
+13. **Array** adalah struktur data yang digunakan untuk menyimpan beberapa nilai dalam satu variabel. Pada kode ini, `MobilDetail[] mbl = new MobilDetail[2];` adalah contoh penggunaan array.
 
 ```bash
 MobilDetail[] mbl = new MobilDetail[2];
